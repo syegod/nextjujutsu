@@ -2,6 +2,8 @@ import main from "@/db/main"
 import { sign } from "jsonwebtoken";
 import { hashSync } from "bcryptjs";
 import { User } from "@/db/models";
+import { useEffect } from "react";
+import axios from "axios";
 
 export default async function register(req, res){
     try {
