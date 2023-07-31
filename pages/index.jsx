@@ -6,8 +6,8 @@ import { useEffect, useState } from "react"
 export default function Home() {
   useEffect(() => {
     async function test() {
-      // const response = await axios.post('/api/auth/login', {usernameOrEmail: 'sigma', password: 'admin123'});
-      const response = await axios.get('/api/auth/getMe');
+      const response = await axios.post('/api/auth/login', {usernameOrEmail: 'sigma', password: 'admin123'});
+      //const response = await axios.get('/api/auth/getMe');
       console.log(response.data);
     }
     test()
