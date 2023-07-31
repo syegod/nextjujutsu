@@ -1,6 +1,14 @@
+import axios from 'axios';
 import React from 'react'
+import { useState } from 'react';
 
 const Register = ({onClose,open }) => {
+
+    const getReg = async () =>{
+        const response = await axios.post('/api/auth/register',form)
+    
+    }
+
     const [form,setForm] = useState({
         username:'',
         email:'',
@@ -22,7 +30,7 @@ const Register = ({onClose,open }) => {
                 <p className='font-bold text-xl text-white mb-5'>Enter Password</p>
                 <input type="password" name='password' placeholder='Password' className='w-96 rounded outline-none p-1 mb-10' onChange={(e)=>{setForm({...form,[e.target.name]:e.target.value})}}/>
                 <div className='flex items-center justify-center '>
-                <button className='text-font-bold text-xl text-white border-4 p-2'onClick={onClose}>Confirm</button>
+                <button className='text-font-bold text-xl text-white border-4 p-2'onClick={()=>{onClose();getReg()}}>Confirm</button>
                 </div>
               
             </div>

@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
+import axios from 'axios';
 
 const Login = ({open,onClose }) => {
 
-    const getLogin = async () =>{
-        const response = await axios.post('/api/auth/login', form);
-    }
     const [form,setForm] = useState({
         usernameOrEmail:'',
         password:''
     })
+    const getLogin = async () =>{
+        const response = await axios.post('/api/auth/login', form);
+        console.log(response.data)
+    }
     if (!open) return null;
     return (
         <div className='fixed w-full h-full z-1000 ' onClick={onClose}>
@@ -24,7 +26,7 @@ const Login = ({open,onClose }) => {
                 <p className='font-bold text-xl text-white mb-5'>Enter Password</p>
                 <input type="password" name='password' placeholder='Password' className='w-96 rounded outline-none p-1 mb-10' onChange={(e)=>{setForm({...form,[e.target.name]:e.target.value})}}/>
                 <div className='flex items-center justify-center '>
-                <button className='text-font-bold text-xl text-white border-4 p-2' onClick={onClose}>Confirm</button>
+                <button className='text-font-bold text-xl text-white border-4 p-2' onClick={()=>{onClose();getLogin()}}>Confirm</button>
                 </div>
               
             </div>
